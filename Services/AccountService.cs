@@ -34,6 +34,7 @@ namespace apiaccounts.Services
             var condition = Builders<User>.Filter.Eq(x => x.id, id);
             var fields = Builders<User>.Projection
                         .Include(x => x.name)
+                        .Include(x => x.username)
                         .Include(x => x.profileImage);
 
             return await repository.users
