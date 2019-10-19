@@ -13,11 +13,11 @@ namespace apiaccounts.Controllers
     [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class AccountsController : Controller
+    public class UsersController : Controller
     {
         private readonly IAccountService _accountService;
 
-        public AccountsController(IAccountService accountService) {
+        public UsersController(IAccountService accountService) {
             _accountService = accountService;
         }
 
@@ -60,9 +60,9 @@ namespace apiaccounts.Controllers
 
             return profileSummary;
         }
-
-        [AllowAnonymous]
+        
         [HttpGet("{id}/signature")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Signature>> GetSignature (string id)
         {
@@ -74,6 +74,7 @@ namespace apiaccounts.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Profile>> Register(Register register)
