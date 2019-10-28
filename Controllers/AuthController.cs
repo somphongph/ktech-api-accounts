@@ -55,7 +55,7 @@ namespace apiaccounts.Controllers
         private JwtSecurityToken GenerateAccessToken(User user) {
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, user.username)
+                new Claim("user", user.id)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecurityKey"]));

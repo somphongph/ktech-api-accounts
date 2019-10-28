@@ -41,6 +41,7 @@ namespace apiaccounts.Controllers
             return profileImage;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}/profile-header")]
         public async Task<ActionResult<ProfileHeader>> GetProfileHeader (string id)
         {
@@ -60,9 +61,9 @@ namespace apiaccounts.Controllers
 
             return profileSummary;
         }
-        
-        [HttpGet("{id}/signature")]
+       
         [AllowAnonymous]
+        [HttpGet("{id}/signature")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Signature>> GetSignature (string id)
         {
