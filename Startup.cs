@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 using apiaccounts.Services;
@@ -35,16 +28,27 @@ namespace apiaccounts
         {
             services.AddControllers();
 
-            services.AddCors(options => {
+            var allowedOrigins = Configuration.GetSection("CORS-Settings:Allow-Origins")
+                .Get<string[]>();
+
+            var allowedHeaders = Configuration.GetSection("CORS-Settings:Allow-Headers")
+                .Get<string[]>();
+
+            var allowedMethods = Configuration.GetSection("CORS-Settings:Allow-Methods")
+                .Get<string[]>();
+
+            services.AddCors(options =>
+            {
                 options.AddPolicy(MyAllowSpecificOrigins,
-                    builder => {
+                    builder =>
+                    {
                         builder
-                            .WithOrigins(Configuration["Cors:WithOrigins"])
-                            .AllowAnyHeader()
-                            .AllowCredentials()
-                            .AllowAnyMethod();
+                            .WithOrigins(allowedOrigins)
+                            .WithHeaders(allowedHeaders)
+                            .WithMethods(allowedMethods)
+                            .AllowCredentials();
                     });
-                });
+            });
 
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
