@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine AS base
 WORKDIR /app
-EXPOSE 59518
-EXPOSE 44364
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
 WORKDIR /src
