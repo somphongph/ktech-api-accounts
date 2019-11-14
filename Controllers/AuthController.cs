@@ -14,7 +14,7 @@ using apiaccounts.Models;
 
 namespace apiaccounts.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("v1/[controller]")]
     public class AuthController : Controller
     {
         private readonly IConfiguration _configuration;
