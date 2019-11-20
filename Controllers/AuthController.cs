@@ -60,8 +60,8 @@ namespace tripdini.accounts.Controllers
             if (user == null) {
                 // Create new user
                 var register = new Register(){
+                    name = authenticate.name,
                     email = authenticate.email,
-                    name = authenticate.name
                 };
 
                 user = await _accountService.Create(register);

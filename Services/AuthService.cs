@@ -49,9 +49,6 @@ namespace tripdini.accounts.Services
                         .Find(condition)
                         .FirstOrDefaultAsync();
 
-            // check if username exists
-            if (user == null) return null;
-
             // authentication successful
             return user;
         }
