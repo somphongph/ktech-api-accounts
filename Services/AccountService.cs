@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-using apiaccounts.Models;
-using apiaccounts.Services.Interfaces;
+using tripdini.accounts.Models;
+using tripdini.accounts.Services.Interfaces;
 
 
-namespace apiaccounts.Services
+namespace tripdini.accounts.Services
 {
     public class AccountService : IAccountService
     {
@@ -96,10 +96,10 @@ namespace apiaccounts.Services
         }
 
 
-        public async Task Create(Register register) {
-            byte[] passwordHash;
-            byte[] passwordSalt;
-            CreatePasswordHash(register.password, out passwordHash, out passwordSalt);
+        public async Task<User> Create(Register register) {
+            // byte[] passwordHash;
+            // byte[] passwordSalt;
+            // CreatePasswordHash(register.password, out passwordHash, out passwordSalt);
 
             var profileImage = new ProfileImage {
                 storeName = "default",
@@ -110,14 +110,14 @@ namespace apiaccounts.Services
                 name = register.name,
                 email = register.email,
                 profileImage = profileImage,
-                passwordHash = passwordHash,
-                passwordSalt = passwordSalt,
+                // passwordHash = passwordHash,
+                // passwordSalt = passwordSalt,
             };
 
             try
             {
-                await repository.users
-                    .InsertOneAsync(user);
+                await repository.users.InsertOneAsync(user);
+                return user;
             }
             catch (Exception ex)
             {

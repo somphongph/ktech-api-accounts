@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "apiaccounts": {
+    "tripdini.accounts": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

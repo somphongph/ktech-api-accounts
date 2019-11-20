@@ -9,21 +9,26 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 
-using apiaccounts.Services.Interfaces;
-using apiaccounts.Models;
+using tripdini.accounts.Services.Interfaces;
+using tripdini.accounts.Models;
 
-namespace apiaccounts.Controllers
+namespace tripdini.accounts.Controllers
 {
     [Route("v1/[controller]")]
     public class AuthController : Controller
     {
         private readonly IConfiguration _configuration;
         private readonly IAuthService _authService;
+        private readonly IAccountService _accountService;
 
-        public AuthController(IConfiguration configuration, IAuthService authService)
-        {
+        public AuthController(
+            IConfiguration configuration, 
+            IAuthService authService, 
+            IAccountService accountService
+        ) {
             _configuration = configuration;
             _authService = authService;
+            _accountService = accountService;
         }
 
         [HttpPost("login")]
@@ -34,6 +39,33 @@ namespace apiaccounts.Controllers
             var user = await _authService.Authenticate(login.username, login.password);
 
             if (user == null) return Unauthorized();
+
+            var token = GenerateAccessToken(user);
+
+            return Ok( new {
+                accessToken = new JwtSecurityTokenHandler().WriteToken(token),
+                refreshToken = Guid.NewGuid().ToString("N"),
+                // refreshToken = _refreshTokenObj.Refreshtoken
+                // user = user
+            });
+        }
+
+        [HttpPost("authen")]
+        public async Task<IActionResult> Authen([FromBody]Authenticate authenticate)
+        {
+            if ( ! this.ModelState.IsValid) return this.BadRequest();
+
+            var user = await _authService.Authenticate(authenticate.email);
+
+            if (user == null) {
+                // Create new user
+                var register = new Register(){
+                    email = authenticate.email,
+                    name = authenticate.name
+                };
+
+                user = await _accountService.Create(register);
+            };
 
             var token = GenerateAccessToken(user);
 

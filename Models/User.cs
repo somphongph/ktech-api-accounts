@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 
-namespace apiaccounts.Models
+namespace tripdini.accounts.Models
 {
     public class User
     {
@@ -23,10 +23,10 @@ namespace apiaccounts.Models
 
         public ProfileImage profileImage { get; set; }
         
-        [Required]
-        public byte[] passwordHash { get; set; }
+        // [Required]
+        // public byte[] passwordHash { get; set; }
 
-        [Required]
-        public byte[] passwordSalt { get; set; }
+        // [Required]
+        // public byte[] passwordSalt { get; set; }
     }
 }

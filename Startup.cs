@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
-using apiaccounts.Services;
-using apiaccounts.Services.Interfaces;
+using tripdini.accounts.Services;
+using tripdini.accounts.Services.Interfaces;
 
-namespace apiaccounts
+namespace tripdini.accounts
 {
     public class Startup
     {

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace apiaccounts.Models
+namespace tripdini.accounts.Models
 {
     public class Register
     {
@@ -16,13 +16,13 @@ namespace apiaccounts.Models
         [MaxLength(200)]
         public string email { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string password { get; set; }
+        // [Required]
+        // [MaxLength(50)]
+        // public string password { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        [Compare("password")]
-        public string confirmPassword { get; set; }         
+        // [Required]
+        // [MaxLength(50)]
+        // [Compare("password")]
+        // public string confirmPassword { get; set; }         
     }
 }

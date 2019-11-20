@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace apiaccounts.Models
+namespace tripdini.accounts.Models
 {
     public class Signature
     {

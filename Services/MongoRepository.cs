@@ -2,7 +2,7 @@ using System;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-using apiaccounts.Models;
+using tripdini.accounts.Models;
 
 public class MongoRepository {
     //delcaring mongo db

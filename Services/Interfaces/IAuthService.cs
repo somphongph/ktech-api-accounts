@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 
-using apiaccounts.Models;
+using tripdini.accounts.Models;
 
 
-namespace apiaccounts.Services.Interfaces
+namespace tripdini.accounts.Services.Interfaces
 {
     public interface IAuthService
     {
         Task<User> Authenticate(string username, string password);
+        Task<User> Authenticate(string email);
     }
 }

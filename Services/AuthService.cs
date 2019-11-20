@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-using apiaccounts.Models;
-using apiaccounts.Services.Interfaces;
+using tripdini.accounts.Models;
+using tripdini.accounts.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using System;
 
-namespace apiaccounts.Services
+namespace tripdini.accounts.Services
 {
     public class AuthService : IAuthService
     {
@@ -32,7 +32,25 @@ namespace apiaccounts.Services
             if (user == null) return null;
 
             // check if password is correct
-            if ( ! VerifyPasswordHash(password, user.passwordHash, user.passwordSalt)) return null;
+            // if ( ! VerifyPasswordHash(password, user.passwordHash, user.passwordSalt)) return null;
+
+            // authentication successful
+            return user;
+        }
+
+        // Authen by third party (Firebase)
+        public async Task<User> Authenticate(string email)
+        {
+            if (string.IsNullOrEmpty(email)) return null;
+
+            var builder = Builders<User>.Filter;
+            var condition = builder.Eq(x => x.email, email);
+            var user = await repository.users
+                        .Find(condition)
+                        .FirstOrDefaultAsync();
+
+            // check if username exists
+            if (user == null) return null;
 
             // authentication successful
             return user;

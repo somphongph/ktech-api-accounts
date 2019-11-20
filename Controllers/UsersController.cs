@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 
-using apiaccounts.Models;
-using apiaccounts.Services.Interfaces;
+using tripdini.accounts.Models;
+using tripdini.accounts.Services.Interfaces;
 
 
-namespace apiaccounts.Controllers
+namespace tripdini.accounts.Controllers
 {
     [Authorize]
     [Route("v1/[controller]")]

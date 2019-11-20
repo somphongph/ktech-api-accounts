@@ -1,4 +1,4 @@
-namespace apiaccounts.Models
+namespace tripdini.accounts.Models
 {
     public class ProfileImage
     {

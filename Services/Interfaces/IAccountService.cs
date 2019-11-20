@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-using apiaccounts.Models;
+using tripdini.accounts.Models;
 
 
-namespace apiaccounts.Services.Interfaces
+namespace tripdini.accounts.Services.Interfaces
 {
     public interface IAccountService
     {
@@ -13,7 +13,7 @@ namespace apiaccounts.Services.Interfaces
         Task<ProfileImage> GetProfileImageById(string id);
         Task<ProfileHeader> GetProfileHeaderById(string id);
         Task<ProfileSummary> GetProfileSummaryById(string id);
-        Task Create(Register register);
+        Task<User> Create(Register register);
         Task<bool> UpdateProfile(string id, Profile profile);
         Task<bool> UpdateProfileImage(string id, ProfileImage profileImage);
         // Task Delete(string id);
