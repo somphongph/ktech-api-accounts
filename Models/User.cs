@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -22,6 +23,12 @@ namespace tripdini.accounts.Models
         public string username { get; set; }
 
         public ProfileImage profileImage { get; set; }
+
+        [BsonDateTimeOptions]
+        public DateTime lastLogon { get; set; } = DateTime.Now;
+
+        [BsonDateTimeOptions]
+        public DateTime createdAt { get; set; } = DateTime.Now;
         
         // [Required]
         // public byte[] passwordHash { get; set; }

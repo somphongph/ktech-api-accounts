@@ -49,6 +49,24 @@ namespace tripdini.accounts.Services
                         .Find(condition)
                         .FirstOrDefaultAsync();
 
+            if(user != null) {
+                // Log
+                var filter = Builders<User>.Filter.Eq(s => s.id, user.id);
+                var update = Builders<User>.Update
+                            .Set(s => s.lastLogon, DateTime.Now);
+                try
+                {
+                    UpdateResult actionResult
+                        = await repository.users.UpdateOneAsync(filter, update);
+                }
+                catch (Exception ex)
+                {
+                    // log or manage the exception
+                    throw ex;
+                }
+
+            }
+
             // authentication successful
             return user;
         }

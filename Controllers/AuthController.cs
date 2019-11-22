@@ -72,8 +72,7 @@ namespace tripdini.accounts.Controllers
             return Ok( new {
                 accessToken = new JwtSecurityTokenHandler().WriteToken(token),
                 refreshToken = Guid.NewGuid().ToString("N"),
-                // refreshToken = _refreshTokenObj.Refreshtoken
-                // user = user
+                userId = user.id,
             });
         }
 

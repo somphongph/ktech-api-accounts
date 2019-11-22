@@ -7,7 +7,6 @@ namespace tripdini.accounts.Models
         [Required]
         public string email { get; set; }
 
-        [Required]
         public string name { get; set; }
     }
 }
