@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-using tripdini.accounts.Models;
+using tripgator.accounts.Models;
 
 
-namespace tripdini.accounts.Services.Interfaces
+namespace tripgator.accounts.Services.Interfaces
 {
     public interface IAccountService
     {

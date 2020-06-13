@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 
-using tripdini.accounts.Models;
-using tripdini.accounts.Services.Interfaces;
+using tripgator.accounts.Models;
+using tripgator.accounts.Services.Interfaces;
 
 
-namespace tripdini.accounts.Controllers
+namespace tripgator.accounts.Controllers
 {
     [Authorize]
     [Route("v1/[controller]")]

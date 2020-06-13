@@ -1,18 +1,16 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS base
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build-env
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
-WORKDIR /src
-COPY tripdini.accounts/tripdini.accounts.csproj tripdini.accounts/
-RUN dotnet restore tripdini.accounts/tripdini.accounts.csproj
-COPY . .
-WORKDIR /src/tripdini.accounts
-RUN dotnet build tripdini.accounts.csproj -c Release -o /app
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish tripdini.accounts.csproj -c Release -o /app
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
 WORKDIR /app
-COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "tripdini.accounts.dll"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "tripgator-api-accounts.dll"]
