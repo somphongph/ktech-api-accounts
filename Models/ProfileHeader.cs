@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace tripgator.accounts.Models
+namespace ktech.accounts.Models
 {
     public class ProfileHeader
     {

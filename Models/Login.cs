@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace tripgator.accounts.Models
+namespace ktech.accounts.Models
 {
     public class Login
     {

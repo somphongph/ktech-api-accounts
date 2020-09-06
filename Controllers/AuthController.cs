@@ -9,10 +9,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 
-using tripgator.accounts.Services.Interfaces;
-using tripgator.accounts.Models;
+using ktech.accounts.Services.Interfaces;
+using ktech.accounts.Models;
 
-namespace tripgator.accounts.Controllers
+namespace ktech.accounts.Controllers
 {
     [Route("v1/[controller]")]
     public class AuthController : Controller

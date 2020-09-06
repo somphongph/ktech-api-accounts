@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-using tripgator.accounts.Models;
-using tripgator.accounts.Services.Interfaces;
+using ktech.accounts.Models;
+using ktech.accounts.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using System;
 
-namespace tripgator.accounts.Services
+namespace ktech.accounts.Services
 {
     public class AuthService : IAuthService
     {

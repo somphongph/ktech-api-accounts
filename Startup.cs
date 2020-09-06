@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
-using tripgator.accounts.Services;
-using tripgator.accounts.Services.Interfaces;
+using ktech.accounts.Services;
+using ktech.accounts.Services.Interfaces;
 
-namespace tripgator.accounts
+namespace ktech.accounts
 {
     public class Startup
     {
