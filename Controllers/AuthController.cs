@@ -86,7 +86,7 @@ namespace ktech.accounts.Controllers
         private JwtSecurityToken GenerateAccessToken(User user) {
             var claims = new[]
             {
-                new Claim("user", user.id)
+                new Claim("userId", user.id)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecurityKey"]));
