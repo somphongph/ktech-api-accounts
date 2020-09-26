@@ -9,10 +9,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 
-using tripgator.accounts.Services.Interfaces;
-using tripgator.accounts.Models;
+using ktech.accounts.Services.Interfaces;
+using ktech.accounts.Models;
 
-namespace tripgator.accounts.Controllers
+namespace ktech.accounts.Controllers
 {
     [Route("v1/[controller]")]
     public class AuthController : Controller
@@ -86,7 +86,7 @@ namespace tripgator.accounts.Controllers
         private JwtSecurityToken GenerateAccessToken(User user) {
             var claims = new[]
             {
-                new Claim("user", user.id)
+                new Claim("userId", user.id)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecurityKey"]));

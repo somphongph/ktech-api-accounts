@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-using tripgator.accounts.Models;
+using ktech.accounts.Models;
 
 
-namespace tripgator.accounts.Services.Interfaces
+namespace ktech.accounts.Services.Interfaces
 {
     public interface IAuthService
     {

@@ -1,4 +1,4 @@
-namespace tripgator.accounts.Models
+namespace ktech.accounts.Models
 {
     public class ProfileImage
     {

@@ -33,3 +33,4 @@ msbuild.wrn
 .sonarlint
 
 appsettings.json
+appsettings.Development.json

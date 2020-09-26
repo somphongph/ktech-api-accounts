@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-using tripgator.accounts.Models;
-using tripgator.accounts.Services.Interfaces;
+using ktech.accounts.Models;
+using ktech.accounts.Services.Interfaces;
 
 
-namespace tripgator.accounts.Services
+namespace ktech.accounts.Services
 {
     public class AccountService : IAccountService
     {

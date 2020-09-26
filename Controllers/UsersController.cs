@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 
-using tripgator.accounts.Models;
-using tripgator.accounts.Services.Interfaces;
+using ktech.accounts.Models;
+using ktech.accounts.Services.Interfaces;
 
 
-namespace tripgator.accounts.Controllers
+namespace ktech.accounts.Controllers
 {
     [Authorize]
     [Route("v1/[controller]")]

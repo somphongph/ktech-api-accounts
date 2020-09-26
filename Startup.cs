@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
-using tripgator.accounts.Services;
-using tripgator.accounts.Services.Interfaces;
+using ktech.accounts.Services;
+using ktech.accounts.Services.Interfaces;
 
-namespace tripgator.accounts
+namespace ktech.accounts
 {
     public class Startup
     {
@@ -28,14 +28,9 @@ namespace tripgator.accounts
         {
             services.AddControllers();
 
-            var allowedOrigins = Configuration.GetSection("CORS-Settings:Allow-Origins")
-                .Get<string[]>();
-
-            var allowedHeaders = Configuration.GetSection("CORS-Settings:Allow-Headers")
-                .Get<string[]>();
-
-            var allowedMethods = Configuration.GetSection("CORS-Settings:Allow-Methods")
-                .Get<string[]>();
+            var allowedOrigins = Configuration.GetSection("CorsSettings:AllowOrigins").Get<string[]>();
+            var allowedHeaders = Configuration.GetSection("CorsSettings:AllowHeaders").Get<string[]>();
+            var allowedMethods = Configuration.GetSection("CorsSettings:AllowMethods").Get<string[]>();
 
             services.AddCors(options =>
             {
